@@ -1,3 +1,13 @@
 Una vez explicado eso, el primer paso para realizar el ensamblaje es determinar cuál fue la calidad de nuestra secuenciación. 
 Para eso utilizamos un programa conocido como Fastqc disponible en https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ 
 donde además encontramos la guía para saber que significa cada uno de las tablas
+
+Se puede encontrar en conda e instarlo usando el comando: conda install fastqc
+
+Se activa el ambiente y se usa el comando:
+
+fastqc --help #para ver todas las opciones del programa
+
+Comando: 
+
+fastqc 111.fastq 112.fastq 113.fastqc -o calidad
