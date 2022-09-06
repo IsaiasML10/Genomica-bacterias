@@ -1,0 +1,3 @@
+Una vez explicado eso, el primer paso para realizar el ensamblaje es determinar cuál fue la calidad de nuestra secuenciación. 
+Para eso utilizamos un programa conocido como Fastqc disponible en https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ 
+donde además encontramos la guía para saber que significa cada uno de las tablas
