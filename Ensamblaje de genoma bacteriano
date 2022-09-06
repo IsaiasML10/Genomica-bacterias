@@ -1,0 +1,42 @@
+  1. Una vez se haya obtenido los resultados de la secuenciación por Ilumina, obtendremos unos archivos .fastq , estos archivos tienen en su interior miles o millones
+  de lecturas o reads de un mismo genoma, acompañados de la calidad de cada una. Una lectura, dependiendo del dispositivo que se use puede ser de diferente longitud,
+  pero generalmente lo que obtenemos con la secuenciación por Ilumina, son lecturas cortas, usando de ejemplo al MiniSeq, este genera lecturas de una longitud de 150 
+  pb. Dentro de la secuenciación, hay que tener claro dos conceptos, uno que es la profundidad o depth, y otro que es el coverage. El depth es una solución para los 
+  erróres que pueden ocurrir durante la secuencación, ya que en promedio 1 de cada 100 bases puede salir errónea, por lo que al secuenciar varias veces un mismo fragmento
+  (profundidad), podremos determinar si una base en una posición X es correcta. El otro concepto, el coverage, representa la cobertura que obtuvimos con nuestras lecturas
+  del todo el genoma(por ejemplo, si tenemos 10 millones de pares de bases y se secuenció con éxito 9 millones, nosotros tenemos un coverage del 90%, ya que ese fue el 
+  porcentaje del genoma que se cubrió).
+  
+  Iniciando con el paso a paso de un ensamblaje, primero hay varias formas de instalar los programas bioinformáticos necesarios para el análisis, puede ser por instalación
+  manual descangando los archivos comprimidos, o mediante la instalación por docker (contenedores) o por conda; la ventaja que nos brindan estos dos últimos, es eliminar
+  la necesidad de ir instalando uno por uno los paquetes que los programas requieren para funcionar, ya que ellos al instalar el programa, ya instalan también los complementos
+  necesarios.
+  
+  Para instalar conda, el tutorial se puede encontrar en: https://bioconda.github.io/ 
+  Ciertos programas no vamos a poder encontrarlos en el canal principal de conda por lo que nosotros vamos a tener que agregarlos, algunos de los más usados son:
+  
+  conda config --add channels defaults
+  conda config --add channels bioconda
+  conda config --add channels conda-forge
+ 
+  Posterior a eso, para poder buscar un programa e instalarlo, para no crear conflictos en el programa, para cada uno creamos un ambiente diferente usando el siguiente comando:
+  
+  conda create -n "nombre del ambiente"
+  
+  Al crearlo nos pedirá que pongamos la "y" o "s" dependiendo del idioma que tenga configurada el computador.
+  
+  Al tenerlo creado, ahora tener que activarlo, con el comando
+  
+  conda activate "nombre del ambiente"
+  
+  Una vez activado proseguimos a buscar si el programa está disponible y cuáles son las versiones disponibles del mismo, con el comando:
+  
+  conda search -f "nombre del programa"
+  
+  Esto nos desplegará todas las versiones diponibles del programa que buscamos, generalmente nos interesa la más reciente, para la instalación, como ya nos encontramos dentro del 
+  ambiente usamos el comando
+  
+  conda install "nombre del programa"="número de la versión"  (ej: conda install spades=5.0.0
+  
+  Y listo, ya tenemos el programa instalado, generalmente para iniciarlo, se puede solo escribir el nombre del programa, en caso de no funcionar se puede agregar el .py (ej: spades.py),
+  o ./ (ej: ./spades)
