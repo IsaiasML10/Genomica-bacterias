@@ -1,0 +1,2 @@
+# Genomica-bacterias
+Tutorial paso a paso de cómo realizar el ensamblaje de un genoma bacteriano a partir de lecturas cortas obtenidas mediante la secuenciación por síntesis de Ilumina, además se agrega el paso a paso de otros análisis, como búsqueda de genes de resistencia, factores de virulencia,etc; creación de árbol filogenético mediante el uso de SNPs y anotaciones de genes, acompañada de la realización del pangenoma para determinación del core de un conjunto de genomas bacterianos.
