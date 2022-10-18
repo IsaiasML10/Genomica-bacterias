@@ -11,3 +11,9 @@ fastqc --help #para ver todas las opciones del programa
 Comando: 
 
 fastqc 111.fastq 112.fastq 113.fastqc -o calidad
+
+Posterior a la observación de la calidad, en caso de tener que realizar recortes o eliminación de adaptadores,
+se usa Trimmomatic --------------------------------
+
+Una vez comprobada de nuevo la calidad y habiendo observado que con Trimmomatic eliminamos lo que no deseamos,
+procedemos con el ensamblaje (Ir al apartado "Ensamblaje con Unicycler" disponible en el repositorio.
