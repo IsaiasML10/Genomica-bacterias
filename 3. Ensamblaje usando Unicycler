@@ -1,1 +1,57 @@
+Una vez trimeadas nuestras lecturas, procedemos a realizar el ensamblaje. Dependiendo si son lecturas cortas o lecturas
+largas, debemos escoger el programa adecuado. En este tutorial, explicamos cómo realizar un ensamblaje de lecturas cortas
+obtenidas mediante Ilumina Mini-Seq, lecturas pareadas de 150 pb. Para estas podemos usar programas como Unicycler y
+SPADES, ambos aparte permiten realizar ensamblaje híbrido en caso de tener lecturas cortas obtenidas por Ilumina y 
+lecturas largas obtenidas por tecnologías como Oxford Nanopore.
+
+Para comenzar el ensamblaje, debemos instalar una de las dos herramientas mencionadas anteriormente, en este tutorial
+usamos Unicycler. La facilidad de la instalación radica en el uso de conda u otros programas como docker, etc.
+
+Para instalar unicycler usando conda seguimos los siguientes pasos:
+
+1. Crear ambiente en conda:
+
+conda create -n unicycler
+
+2. Activar el ambiente:
+
+conda activate unicycler
+
+3. Buscar la versión del programa a instalar:
+
+conda search -f unicycler
+
+4. A continuación apareceran las versiones disponibles hasta el momento
+
+5. Instalaremos la versión de unicycler dentro del ambiente que creamos usando el siguiente comando:
+
+conda install unicycler="número de versión"
+Ej: conda install unicycler=0.5.0
+
+Una vez instalado el programa, podemos guiarnos de las herramientas con las que cuenta usando el comando:
+
+unicycler --help_all 
+
+Para la utilización de unicycler en el ensabmlaje de genomas bacterianos, el comando más simple a usar es:
+
+unicycler 1 "Lectura R1 o forward" 2 "Lectura R2 o reverse" out "Nombre del fasta final" -t "Número de threads(núclos o hilo) a usar"
+Ej: unicycler 1 R1.fastq 2 R2.fastq out ensamblaje.fasta -t 8
+
+Este comando es el más sensillo para realizar un ensamblaje. Ya que otras opciones permiten modificar otros parámetros
+como los K-mers. Mientras que por default el programa busca el mejor K-mer, que es una secuencia de longitud K, usadas
+en la formación contigs. Un valor K muy alto puede ser muy restrictivo y conllevar a la pérdida de lecturas muy cortas
+que pueden estar representadas por plásmidos, indels, transposones, etc. Mientras que un valor de K-mers muy bajo
+puede darnos la formación de contigs muy cortos.
+
+Otros parámetros que podemos encontrar es --min_fasta_lenght un comando que nos sirve para poner un límite a la
+longitud de nuestros contigs, evitando la formación de contigs muy pero muy pequeños, por ejemplo de 10 pb, lo cuál
+no debería ser posible si nuestras lecturas en su mayoría tienen una longitud de 150 pb. Este comando, también lo 
+tenemos que tener en cuenta al momento de utilizarlo, ya que limitar la longitud de los contigs puede llevarnos a la 
+pérdida de secuencias cortas de plásmidos u otros elementos.
+
+Cuando se quiere usar un ensamblaje híbrido el uso del comando: 
+
+unicycler -1 R1.fastq -2 R2.fastq -long lectura_larga.fastq out resultado.fasta
+
+En esta línea el comando -long nos permite insertar una lectura larga a nuestra ecuación
 
