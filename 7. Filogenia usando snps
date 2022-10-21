@@ -1,1 +1,25 @@
+Para la filogenia, necesitamos una serie de genomas. Para garantizar una diversidad taxonómica es recomendable usar varios genomas, o genes, dependiendo
+de lo que se quiera realizar filogenia, ya que está se puede realizar usando genomas completos, o solo para determinar la evolución a través del tiempo
+de un gen. Existen tres métodos de filogenia, los cuáles son: maximum likelihood, maximum parsimoni and matrix distance. En este tutorial usaremos maximum
+likelihood mediante el programa FastTree. Este programa requiere un documento .aln con la alineación de los genomas o genes de los cuáles se va a hacer
+filogenia. En este caso realizaremos el alineamiento usando el programa snippy, el cuál sirve para hallar SNPs dentro de los genomas, a comparación de un 
+genoma de referencia.
 
+El cómo usar snippy está disponible en: https://github.com/tseemann/snippy 
+
+Una vez se acaba de correr el programa snippy, este nos da una serie de documentos, pero para realizar la filogenia nos interesa el core.aln
+
+Cuando tenemos este archivo, usamos FastTree, usando el siguiente comando:
+
+fasttree core.aln > tree
+
+Así con este comando podemos tener el archivo que nos permitirá tener el árbol filogenético. Hay otra cosa que se debe tener en cuenta
+si la secuencia que tenemos alineada corresponde a aminoácidos o nucleotidos. En el caso de tener nucleótidos usamos:
+
+fasttree -nt core.aln > tree 
+
+En caso de tener aminoácidos no se necesita poner nada, ya que por default el programa cree usar aminoácidos.
+
+El archivo final lo deberíamos nombrar con la temrinación .nwk que corresponde a un archivo newick, un formato comunmente 
+usado para filogenia y que permite la edición del árbol. Para la visualización del árbol se puede usar ITOLs
+Interactive Tree of Live disponible en: https://itol.embl.de/ 
