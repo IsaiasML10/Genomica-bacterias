@@ -2,8 +2,12 @@ Para la filogenia, necesitamos una serie de genomas. Para garantizar una diversi
 de lo que se quiera realizar filogenia, ya que está se puede realizar usando genomas completos, o solo para determinar la evolución a través del tiempo
 de un gen. Existen tres métodos de filogenia, los cuáles son: maximum likelihood, maximum parsimoni and matrix distance. En este tutorial usaremos maximum
 likelihood mediante el programa FastTree. Este programa requiere un documento .aln con la alineación de los genomas o genes de los cuáles se va a hacer
-filogenia. En este caso realizaremos el alineamiento usando el programa snippy, el cuál sirve para hallar SNPs dentro de los genomas, a comparación de un 
-genoma de referencia.
+filogenia. En este caso realizaremos el alineamiento usando el programa snippy, el cuál sirve para hallar SNPs dentro de los genomas, usando como molde un 
+genoma de referencia. Este programa, solo se usa para realizar la detección de snps, indels, etc, solo entre genomas de bacterias de una misma especie,
+no funciona bien inclusive entre genomas de bacterias del mismo género y diferente especie. Esto debido a que el programa está configurado para que el
+core.aln sea hecho solo a partir de genomas, que tengan mayor parte de las bases alineadas, y tener un número de bases no alineados mayor a 200.000 pd
+puede volverse un inconveniente como menciona el autor en el post: https://github.com/tseemann/snippy/issues/280
+Existen programas también con genomas con un depth menor a 10X.
 
 El cómo usar snippy está disponible en: https://github.com/tseemann/snippy 
 
