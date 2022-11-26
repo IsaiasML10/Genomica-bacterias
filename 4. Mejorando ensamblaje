@@ -1,1 +1,15 @@
+Una vez tenemos nuestro draft genome, nosotros buscamos mejorar este. Una de las formas es reordenar los contigs y generando scaffolds a partir de estos.
+Esto lo podemos realizar usando un programa llamado ragtag, disponible en: https://github.com/malonge/RagTag 
+Esta herramienta nos permite realizar las funciones: correct, scaffold, patch y merge.
+
+1. Correct: Esta función nos permite reordenar los contigs usando un genoma de referencia, ya que al momento de ensamblar un genoma a partir de reads,
+nosotros obtenemos un número determinado de contigs, armados por algoritmo, pero no organizados según el genoma de la bacteria que ensamblamos. Es
+una función parecida a lo que es Progressive Mauve.
+
+2. Scaffold: Con esta función nosotros a partir de los contigs, generamos scaffolds, es decir segmentos de ADN de mayor tamaño.
+
+3. Patch: Usando un genoma de referencia se parchan los gaps en el genoma.
+
+4. Merge: Usando diferentes archivos de ensamblaje, se genera un consenso de ambos.
+
 
