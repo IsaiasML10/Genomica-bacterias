@@ -1,0 +1,6 @@
+fastqc *_R1.fastq.gz *_R2.fastq.gz -t 8 #calidad de los fastq
+trimmomatic PE *_R1.fastq.gz *_R2.fastq.gz output_forward_paired.fq.gz output_forward_unpaired.fq.gz output_reverse_paired.fq.gz output_reverse_unpaired.fq.gz ILLUMINACLIP:NexteraPE-PE.fa:2:30:10:2:True LEADING:3 TRAILING:3 MINLEN:40 #limpiar lecturas de acuerdo a lo mostrado en fastqc (eleiminar adaptadores, secuencias o bases de baja calidad)
+fastqc -t 8 output_reverse_paired.fq.gz output_forward_paired.fq.gz 
+bbmap.sh ref=Klebsiella_pneumoniae_HS11286_genomic.fna in=output_forward_paired.fq.gz in2=output_reverse_paired.fq.gz minid=0.85 usequality=t out=mapping.bam outu=unmapped.fastq outm=mapped.fastq covstats=coverage_stats.txt covhist=coverage_hist.txt -Xmx12g trimq=20 minaveragequality=20 #solo se mapean las lecturas con calidad mayor a 20. En el archivo unmapped están las lecturas que no se mapearon por falta de similitud con la referencia y las secuencias con calidad menor a 20.
+fastqc unmapped.fastq mapped.fastq
+bbmap.sh ref=KPEC1K.fasta in=output_forward_paired.fq.gz in2=output_reverse_paired.fq.gz minid=0.85 usequality=t out=mapping_KPEC1K.bam outu=unmapped_KPEC1K.fastq outm=mapped_KPEC1K.fastq covstats=coverage_stats_KPEC1K.txt covhist=coverage_hist_KPEC1K.txt -Xmx12g trimq=20 minaveragequality=20 #solo se mapean las lecturas con calidad mayor a 20.
